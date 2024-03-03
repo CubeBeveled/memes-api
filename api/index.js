@@ -6,7 +6,7 @@ const port = 3000;
 
 api.use(express.json());
 
-api.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+api.get("/", (req, res) => res.sendFile(path.join(__dirname, "main.html")));
 
 api.get("/styles.css", (req, res) => res.sendFile(path.join(__dirname, "styles.css")));
 
@@ -15,7 +15,6 @@ api.get("/eng/random", (req, res) => {
 });
 
 api.get("/eng/list", (req, res) => res.sendFile(path.join(__dirname, "memes.json")));
-
 
 api.listen(port, () => console.log(`Server ready on port ${port}.`));
 
