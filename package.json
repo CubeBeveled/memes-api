@@ -12,8 +12,6 @@
   "author": "BeveledCube",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.3",
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "express": "^4.18.3"
   }
 }

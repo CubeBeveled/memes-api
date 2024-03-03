@@ -1,22 +1,21 @@
+const memes = require("./memes.json");
 const express = require("express");
-const fs = require("fs");
-const path = require("path")
+const path = require("path");
 const api = express();
 const port = 3000;
 
-api.use(express.json())
+api.use(express.json());
 
-api.get("/", (req, res) => res.sendFile("main.html"));
+api.get("/", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+
+api.get("/styles.css", (req, res) => res.sendFile(path.join(__dirname, "styles.css")));
 
 api.get("/eng/random", (req, res) => {
-  const files = fs.readdirSync(path.join(__dirname, "../eng"));
-
-  if (files.length === 0) {
-    res.send("There are no memes in the folder :(");
-  } else {
-    res.sendFile(path.join(__dirname, `../eng/${files[Math.floor(Math.random() * files.length)]}`))
-  }
+  res.redirect(`https://memes-silk.vercel.app/eng/${memes[Math.floor(Math.random() * memes.length)]}`);
 });
+
+api.get("/eng/list", (req, res) => res.sendFile(path.join(__dirname, "memes.json")));
+
 
 api.listen(port, () => console.log(`Server ready on port ${port}.`));
 
